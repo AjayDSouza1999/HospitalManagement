@@ -12,30 +12,41 @@ module.exports.getDataFromDBService = () => {
     });
   };
   
-
-
-module.exports.createUserDBService = (userDetails) => {
+  module.exports.createUserDBService = (userDetails) => {
     return new Promise(function myFn(resolve, reject) {
-      var userModelData = new userModel();
+      // Search for employee ID before saving
+      userModel.findOne({ employeeId: userDetails.employeeId })
+        .then((existingEmployee) => {
+          if (existingEmployee) {
+            reject(new Error("Employee ID already exists. Cannot submit."));
+          } else {
+            var userModelData = new userModel();
   
-      userModelData.employeeId = userDetails.employeeId;
-      userModelData.firstName = userDetails.firstName;
-      userModelData.lastName = userDetails.lastName;
-      userModelData.department = userDetails.department;
-      userModelData.mobileNo = userDetails.mobileNo;
-      userModelData.emailId = userDetails.emailId;
-      userModelData.address = userDetails.address;
+            userModelData.employeeId = userDetails.employeeId;
+            userModelData.firstName = userDetails.firstName;
+            userModelData.lastName = userDetails.lastName;
+            userModelData.department = userDetails.department;
+            userModelData.mobileNo = userDetails.mobileNo;
+            userModelData.emailId = userDetails.emailId;
+            userModelData.address = userDetails.address;
   
-      userModelData
-        .save()
-        .then((result) => {
-          resolve(true);
+            userModelData
+              .save()
+              .then((result) => {
+                resolve(true);
+              })
+              .catch((error) => {
+                reject(false);
+              });
+          }
         })
         .catch((error) => {
           reject(false);
         });
     });
   };
+  
+  
   
   module.exports.updateUserDBService = (employeeId, userDetails) => {
     return new Promise((resolve, reject) => {

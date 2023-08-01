@@ -5,14 +5,23 @@ var getDataConntrollerfn = async (req, res) => {
   res.send({ status: true, data: empolyee });
 };
 
+// var createUserControllerFn = async (req, res) => {
+//   var status = await userService.createUserDBService(req.body);
+//   if (status) {
+//     res.send({ status: true, message: "User created successfully" });
+//   } else {
+//     res.send({ status: false, message: "Error creating user" });
+//   }
+// };
 var createUserControllerFn = async (req, res) => {
-  var status = await userService.createUserDBService(req.body);
-  if (status) {
+  try {
+    await userService.createUserDBService(req.body);
     res.send({ status: true, message: "User created successfully" });
-  } else {
-    res.send({ status: false, message: "Error creating user" });
+  } catch (error) {
+    res.send({ status: false, message: error.message });
   }
 };
+
 
 var updateUserController = async (req, res) => {
   console.log(req.params.id);
