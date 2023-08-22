@@ -16,7 +16,7 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon"></span>        
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -25,10 +25,10 @@
         </li>
         <li class="nav-item"><a class="nav-link" href="#">Patient</a></li>
         <li class="nav-item">
-                              <a class="nav-link" href="#">Appointment</a>      
+          <a class="nav-link" href="#">Appointment</a>
         </li>
         <li class="nav-item">
-                              <a class="nav-link" href="#">Patient History</a>  
+          <a class="nav-link" href="#">Patient History</a>
         </li>
       </ul>
     </div>
@@ -54,7 +54,7 @@
         <div class="row mb-3">
           <div class="col">
             <div class="form-outline">
-              <label class="form-label required"><b>Name</b></label>            
+              <label class="form-label required"><b>Name</b></label>
               <input
                 type="text"
                 [(ngModel)]="docName"
@@ -74,7 +74,7 @@
           </div>
           <div class="col">
             <div class="form-outline">
-              <label class="form-label"><b>Address</b></label>                  
+              <label class="form-label"><b>Address</b></label>
               <input
                 type="text"
                 [(ngModel)]="Address"
@@ -88,7 +88,7 @@
         <div class="row mb-3">
           <div class="col">
             <div class="form-outline">
-              <label class="form-label required"><b>Specialty</b></label>      
+              <label class="form-label required"><b>Specialty</b></label>
               <input
                 type="text"
                 [(ngModel)]="specialty"
@@ -100,7 +100,7 @@
           </div>
           <div class="col">
             <div class="form-outline">
-              <label class="form-label required"><b>Education</b></label>      
+              <label class="form-label required"><b>Education</b></label>
               <input
                 type="text"
                 [(ngModel)]="Education"
@@ -114,8 +114,8 @@
         <div class="row mb-3">
           <div class="col">
             <div class="form-outline">
-              <label class="form-label required"><b>Phone Number</b></label>    
-              <input
+              <label class="form-label required"><b>Phone Number</b></label
+              ><input
                 type="text"
                 [(ngModel)]="PhoneNumber"
                 [ngModelOptions]="{ standalone: true }"
@@ -124,23 +124,11 @@
               />
             </div>
           </div>
-          <!-- <div class="col">
-            <div class="form-outline">
-              <label class="form-label required"><b>Email</b></label>          
-              <input
-                type="text"
-                [(ngModel)]="Email"
-                [ngModelOptions]="{ standalone: true }"
-                class="form-control"
-                id="Email"
-              />
-            </div>
-          </div> -->
 
           <div class="col">
             <div class="form-outline">
-              <label class="form-label required"><b>Email</b></label>
-              <input
+              <label class="form-label required"><b>Email</b></label
+              ><input
                 type="text"
                 [(ngModel)]="Email"
                 [ngModelOptions]="{ standalone: true }"
@@ -148,20 +136,17 @@
                 id="Email"
                 name="Email"
                 required
-            
               />
               <div *ngIf="!emailIsValid()" class="text-danger">
                 Please enter a valid email address (username@gmail.com).
               </div>
             </div>
           </div>
-
-
         </div>
         <div class="row mb-3">
           <div class="col">
             <div class="form-outline">
-              <label class="form-label required"><b>Gender</b></label>          
+              <label class="form-label required"><b>Gender</b></label>
               <select
                 class="form-select"
                 [(ngModel)]="Gender"
@@ -175,7 +160,7 @@
           </div>
           <div class="col">
             <div class="form-outline">
-              <label class="form-label required"><b>Status</b></label>          
+              <label class="form-label required"><b>Status</b></label>
               <select
                 class="form-select"
                 [(ngModel)]="Status"
@@ -264,7 +249,7 @@
             <div class="row">
               <div class="col-6">
                 <div class="form-outline">
-                  <label class="form-label"><b>Created By</b></label>          
+                  <label class="form-label"><b>Created By</b></label>
                   <input
                     type="text"
                     [(ngModel)]="CreatedBy"
@@ -276,7 +261,7 @@
               </div>
               <div class="col-6">
                 <div class="form-outline">
-                  <label class="form-label"><b>Updated By</b></label>          
+                  <label class="form-label"><b>Updated By</b></label>
                   <input
                     type="text"
                     [(ngModel)]="ModifiedBy"
@@ -290,7 +275,8 @@
           </div>
           <div class="col-6">
             <div class="form-outline">
-              <label class="form-label"><b>Number of Appointments</b></label>  
+              <label class="form-label"><b>Number of Appointments</b></label>
+
               <input
                 type="text"
                 [(ngModel)]="NumberOfAppointments"
@@ -325,27 +311,16 @@
           <tr>
             <th></th>
             <th></th>
-            <th scope="col">
-              Name                                                    
-            </th>
-            <th scope="col">
-              Address                                                
-            </th>
-            <th scope="col">
-              Specialty                                                  
-            </th>
-            <th scope="col">
-              Education                                            
-            </th>
-            <th scope="col">
-              PhoneNumber                                                      
-            </th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+
+            <th scope="col">Specialty</th>
+            <th scope="col">Education</th>
+            <th scope="col">PhoneNumber </th>
             <th scope="col">Email</th>
             <th scope="col">Status</th>
             <th></th>
-            <th scope="col">
-              Number Of Appointments                                            
-            </th>
+            <th scope="col">Number Of Appointments</th>
           </tr>
         </thead>
         <tbody>
