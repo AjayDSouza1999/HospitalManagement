@@ -3,35 +3,67 @@ var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
 
-    employeeId: {
+    name : {
         type: String,
         //required: true
     },
-    firstName: {
+    address: {
         type: String,
         //required: true
     },
-    lastName: {
+    speciality: {
         type: String,
        // required: true
     },
-    department:{
+    education:{ //5
         type: String,
         //required: true
     },
-    mobileNo:{
+    phoneNo:{
         type: String,
         //required: true
     },
-    emailId:{
+    email:{
         type: String,
         //required: true
     },
-    address:{
+    gender: {
+        type: String,
+       // required: true
+    },
+    status:{
+        type: String,
+        //required: true
+    },
+    weekday:{
+        type: String,
+        //required: true
+    },
+    weekdaySlot:{
+        type: String,
+        //required: true
+    },
+    weekend:{  //12
+        type: String,
+        //required: true
+    },
+    weekendSlot:{
+        type: String,
+        //required: true
+    },
+    createdBy:{
+        type: String,
+        //required: true
+    },
+    updatedBy:{
+        type: String,
+        //required: true
+    },
+    numberOfAppointments:{
         type: String,
         //required: true
     },
 
 });
 
-module.exports = mongoose.model('employeesData',userSchema);
+module.exports = mongoose.model('hospital',userSchema);
