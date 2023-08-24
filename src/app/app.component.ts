@@ -16,6 +16,9 @@ import { HospitalService } from './hospital.service';
 })
 export class AppComponent implements OnInit {
   //search variables
+
+
+
   nameKeyword: string = '';
   statusKeyword: string = '';
   specialtyKeyword: string = ''; //form variables
@@ -35,7 +38,7 @@ export class AppComponent implements OnInit {
   ModifiedBy: string = '';
   NumberOfAppointments: Number = 0;
   docId: string = '';
-  docArray: any[] = [];
+
   bulkUpdateArray: any[] = [];
   updatedStatus: any = ''; //flags
   showForm: boolean = false;
@@ -54,31 +57,14 @@ export class AppComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.getDoctorRecords();
-  }
-
-  getDoctorRecords() {
-    this.hospialService.getEmployeesList().subscribe((response) => {
-      console.log('Type of data:', typeof response); // log the type of data
-      console.log(response);
-
-      if (response.status === true && Array.isArray(response.data)) {
-        this.docArray = response.data; // Assign the array of doctor records
-        console.log('printing the docarray contents ', this.docArray);
-      } else {
-        console.log('Data is not an array');
-      }
-
-      let message: string = 'Hello World';
-
-      console.log(message);
-    });
+    this.getDoctorRecords(); // Provide the default page number
   }
 
   emailIsValid(): boolean {
     const pattern = /[a-zA-Z0-9._%+-]+@gmail\.com/;
     return pattern.test(this.Email);
   }
+
   get nameField() {
     return this.form.get('name');
   } //get all records from Database
@@ -229,5 +215,57 @@ export class AppComponent implements OnInit {
     //       alert("Doctor record deleted");
     //       this.getAll();
     //     })
+  }
+
+  currentPage: number = 1;
+  itemsPerPage: number = 5;
+  totalPages: number = 0;
+  docArray: any[] = []; // Store all records from the API
+  displayedRecords: any[] = []; // Displayed records for the current page
+
+
+  getDoctorRecords() {
+    this.hospialService.getEmployeesList().subscribe((response) => {
+      if (response.status === true && Array.isArray(response.data)) {
+        this.docArray = response.data;
+        this.totalPages = Math.ceil(this.docArray.length / this.itemsPerPage);
+        console.log('Total Pages:', this.totalPages);
+
+        this.updatePageData(this.currentPage); // Initial display of records
+      } else {
+        console.log('Data is not an array');
+      }
+    });
+  }
+
+  getPageNumbers(): number[] {
+    return Array.from({ length: this.totalPages }, (_, index) => index + 1);
+  }
+
+  onPreviousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePageData(this.currentPage);
+    }
+  }
+
+  onNextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePageData(this.currentPage);
+    }
+  }
+
+  onPageChange(pageNumber: number) {
+    this.currentPage = pageNumber;
+    this.updatePageData(this.currentPage);
+  }
+
+  updatePageData(pageNumber: number) {
+    const startIndex = (pageNumber - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+
+    // Slice the docArray to get only the records for the current page
+    this.displayedRecords = this.docArray.slice(startIndex, endIndex);
   }
 }

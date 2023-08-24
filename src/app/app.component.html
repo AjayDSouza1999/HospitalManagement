@@ -322,7 +322,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of docArray">
+        <tr *ngFor="let item of displayedRecords">
           <td>{{ item.name }}</td>
           <td>{{ item.address }}</td>
           <td>{{ item.speciality }}</td>
@@ -353,5 +353,13 @@
         </tr>
       </tbody>
     </table>
-  </div>
+    <div class="pagination">
+      <button (click)="onPreviousPage()">Previous</button>
+      <button *ngFor="let pageNumber of getPageNumbers()" (click)="onPageChange(pageNumber)">
+        {{ pageNumber }}
+      </button>
+      <button (click)="onNextPage()">Next</button>
+    </div>
+
+
 </div>
