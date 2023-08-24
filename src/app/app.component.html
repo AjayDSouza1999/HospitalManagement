@@ -57,11 +57,11 @@
               <label class="form-label required"><b>Name</b></label>
               <input
                 type="text"
-                [(ngModel)]="docName"
+                [(ngModel)]="name"
                 [ngModelOptions]="{ standalone: true }"
-                name="docName"
+                name="name"
                 class="form-control"
-                id="docName"
+                id="name"
                 required
               />
               <div
@@ -74,13 +74,13 @@
           </div>
           <div class="col">
             <div class="form-outline">
-              <label class="form-label"><b>Address</b></label>
+              <label class="form-label"><b>address</b></label>
               <input
                 type="text"
-                [(ngModel)]="Address"
+                [(ngModel)]="address"
                 [ngModelOptions]="{ standalone: true }"
                 class="form-control"
-                id="Address"
+                id="address"
               />
             </div>
           </div>
@@ -100,13 +100,13 @@
           </div>
           <div class="col">
             <div class="form-outline">
-              <label class="form-label required"><b>Education</b></label>
+              <label class="form-label required"><b>education</b></label>
               <input
                 type="text"
-                [(ngModel)]="Education"
+                [(ngModel)]="education"
                 [ngModelOptions]="{ standalone: true }"
                 class="form-control"
-                id="Education"
+                id="education"
               />
             </div>
           </div>
@@ -117,10 +117,10 @@
               <label class="form-label required"><b>Phone Number</b></label
               ><input
                 type="text"
-                [(ngModel)]="PhoneNumber"
+                [(ngModel)]="PhoneNo"
                 [ngModelOptions]="{ standalone: true }"
                 class="form-control"
-                id="PhoneNumber"
+                id="PhoneNo"
               />
             </div>
           </div>
@@ -303,57 +303,55 @@
     </form>
   </div>
 </div>
-<div *ngIf="!showForm">
-  <div class="container mt-4">
-    <div class="card mb-4">
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-            <th scope="col">Name</th>
-            <th scope="col">Address</th>
 
-            <th scope="col">Specialty</th>
-            <th scope="col">Education</th>
-            <th scope="col">PhoneNumber </th>
-            <th scope="col">Email</th>
-            <th scope="col">Status</th>
-            <th></th>
-            <th scope="col">Number Of Appointments</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of docArray">
-            <td>
-              <a
-                class="edit"
-                title="Edit"
-                data-toggle="tooltip"
-                (click)="setUpdate(item)"
-                ><i class="material-icons link">&#xE254;</i></a
-              >
-            </td>
-            <td>
-              <a
-                class="delete"
-                title="Delete"
-                data-toggle="tooltip"
-                (click)="Delete(item)"
-                ><i class="material-icons link">&#xE872;</i></a
-              >
-            </td>
-            <td>{{ item.docName }}</td>
-            <td>{{ item.Address }}</td>
-            <td>{{ item.specialty }}</td>
-            <td>{{ item.Education }}</td>
-            <td>{{ item.PhoneNumber }}</td>
-            <td>{{ item.Email }}</td>
-            <td>{{ item.Status }}</td>
-            <td>{{ item.NumberOfAppointments }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div *ngIf="!showForm">
+  <div class="container mt-5">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">address</th>
+          <th scope="col">Speciality</th>
+          <th scope="col">education</th>
+          <th scope="col">PhoneNo</th>
+          <th scope="col">Email</th>
+          <th scope="col">Status</th>
+          <th scope="col">Number Of Appointments</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of docArray">
+          <td>{{ item.name }}</td>
+          <td>{{ item.address }}</td>
+          <td>{{ item.speciality }}</td>
+
+          <td>{{ item.education }}</td>
+          <td>{{ item.phoneNo }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.status }}</td>
+          <td>{{ item.numberOfAppointments}}</td>
+          <td>
+            <a
+              class="edit"
+              title="Edit"
+              data-toggle="tooltip"
+              (click)="setUpdate(item)"
+              ><i class="material-icons link">&#xE254;</i></a
+            >
+          </td>
+          <td>
+            <a
+              class="delete"
+              title="Delete"
+              data-toggle="tooltip"
+              (click)="Delete(item)"
+              ><i class="material-icons link">&#xE872;</i></a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
